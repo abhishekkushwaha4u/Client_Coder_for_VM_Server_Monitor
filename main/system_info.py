@@ -144,18 +144,20 @@ def battery_info():
 
 
 def temperature_info():
-    try:
-        temperature_stats = psutil.sensors_temperatures()
-        params = {}
-        for i in temperature_stats.keys():
-            if i == 'coretemp':
-                params['Core Temperature'] = {}
-                for j in i:
-                    params['Core Temperature'][j.label]['current'] = j.current
-                    params['Core Temperature'][j.label]['high'] = j.high
-                    params['Core Temperature'][j.label]['critical'] = j.critical
-    except Exception as e:
-        print(e)
+    # try:
+    #     temperature_stats = psutil.sensors_temperatures()
+    #     params = {}
+    #     for i in temperature_stats.keys():
+    #         if i == 'coretemp':
+    #             params['Core Temperature'] = {}
+    #             for j in i:
+    #                 print(j)
+    #                 params['Core Temperature'].update({j.label:{'current':j.current}})  
+    #                 params['Core Temperature'].update({j.label:{'high':j.high}})
+    #                 params['Core Temperature'].update({j.label:{'critical':j.critical}})
+    #     print(params)
+    # except Exception as e:
+    #     print(e)
+    return psutil.sensors_temperatures()
 
-
-print(psutil.sensors_temperatures())
+#print(psutil.sensors_temperatures())
